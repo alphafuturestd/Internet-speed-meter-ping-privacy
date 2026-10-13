@@ -198,6 +198,7 @@
     }
 
     td code {
+      overflow-wrap: anywhere;
       font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Monaco, monospace;
       font-size: 12px;
       color: var(--accent);
@@ -211,6 +212,11 @@
       font-size: 13px;
       color: var(--text-dim);
       margin-top: 36px;
+    }
+
+    a {
+      color: var(--accent);
+      overflow-wrap: anywhere;
     }
 
     @media (max-width: 600px) {
@@ -247,136 +253,87 @@
   <div class="container">
     <!-- Header -->
     <div class="header-card">
-      <div class="badge">
-        <span class="badge-dot"></span>
-        Zero Data Collection
-      </div>
+      <div class="badge"><span class="badge-dot"></span>On-device Network Monitoring</div>
       <h1>Privacy Policy</h1>
-      <p class="subtitle"><strong>App Name:</strong> Internet Speed Meter & Ping</p>
-      <p class="subtitle"><strong>Effective Date:</strong> September 18, 2026</p>
+      <p class="subtitle"><strong>App Name:</strong> Internet Speed Meter &amp; Ping</p>
+      <p class="subtitle"><strong>Last Updated:</strong> October 13, 2026</p>
     </div>
 
-    <!-- Core Principle -->
     <div class="section">
-      <h2>1. Overview & Core Principle</h2>
-      <div class="highlight-box">
-        <p><strong>Internet Speed Meter & Ping</strong> does NOT collect, transmit, store, or sell any personally identifiable information (PII). All speed and latency calculations occur exclusively on your local device in real time.</p>
-      </div>
-      <p>This Privacy Policy explains how our application operates, which device permissions are requested, and why they are necessary to provide network monitoring functionality.</p>
+      <h2>1. Overview</h2>
+      <p>Internet Speed Meter &amp; Ping is a network utility that displays transfer speed, latency, data usage, per-app traffic, and devices on your local network.</p>
+      <p>We do not operate app accounts, advertising networks, analytics trackers, or a developer-run server for receiving your traffic history. The App processes network statistics on your device. Network diagnostic features connect to external providers and local devices as described below.</p>
     </div>
 
-    <!-- Information Handled -->
     <div class="section">
       <h2>2. Information Handled by the App</h2>
-      
-      <h3>A. Network Traffic & Data Counters</h3>
-      <p>The App reads standard operating system network statistics provided by Android (via <code>android.net.TrafficStats</code> and <code>NetworkStatsManager</code>). This measures the total bytes transferred across Wi-Fi and Cellular interfaces.</p>
-      <ul>
-        <li><strong>No content inspection:</strong> We do not inspect packet contents, user requests, URLs, browsing history, or personal communications.</li>
-        <li><strong>Local storage only:</strong> Daily and monthly data counters are saved purely inside the App's private local database on your device. Nothing is uploaded to any server.</li>
-      </ul>
-
-      <h3>B. Latency & Ping Measurements</h3>
-      <p>To display real-time latency (ping) in the status bar and shade, the App sends standard lightweight ICMP/socket echo requests to well-known public DNS resolvers (such as Cloudflare <code>1.1.1.1</code> or Google DNS <code>8.8.8.8</code>).</p>
-      <ul>
-        <li>These echo requests contain no user identifiers, accounts, or personal data.</li>
-        <li>Only the round-trip response duration in milliseconds (ms) is recorded to display current network stability.</li>
-      </ul>
+      <h3>A. Network and traffic statistics</h3>
+      <p>The App reads Android network counters and usage statistics to display Wi-Fi and mobile data consumption. It can display connection type, signal strength, local IP address, and Wi-Fi network name where Android makes them available. Usage history, settings, data-plan configuration, and successful speed-test results are stored in the App's private storage.</p>
+      <p>The App does not intercept the content of other apps' network traffic, browsing history, passwords, or messages.</p>
+      <h3>B. Installed apps and per-app data usage</h3>
+      <p>When you grant Usage Access in Android settings, the App reads per-app network statistics. It accesses installed-app metadata, including package names, app names, icons, and Android user IDs, to label traffic statistics. This information is processed on your device and is not uploaded to the developer or sent to the diagnostic providers. You can revoke Usage Access in Android settings.</p>
+      <h3>C. Ping and latency measurements</h3>
+      <p>Status-bar monitoring and user-initiated latency tests connect to the selected public endpoints, including Cloudflare, Google Public DNS, Quad9, or OpenDNS. These tests use TCP connections or ICMP requests to measure connection response times. They do not send your traffic history, installed-app list, or personal files.</p>
+      <p>The receiving provider necessarily sees the source public IP address and connection metadata. Its handling of those requests is governed by its own policies.</p>
+      <h3>D. Speed tests</h3>
+      <p>When you start a speed test, the App makes HTTPS requests to speed.cloudflare.com, downloads test data, and uploads generated test bytes. The uploaded payload is synthetic data, not your files or the contents of traffic from other apps. Cloudflare receives your public IP address and request metadata as part of these connections. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a>.</p>
+      <p>Speed tests consume network data and can use a substantial amount on fast connections. Your mobile operator's normal data charges may apply. Completed test results are saved on your device; unsuccessful or cancelled tests are not saved as successful results.</p>
+      <h3>E. Local network device discovery</h3>
+      <p>When you request a local network scan, the App probes addresses and ports on the connected local network and uses local DNS, mDNS, NetBIOS, and HTTP requests to identify devices. Results may include local IP addresses, MAC addresses where available, device or host names, vendor labels, open ports, and response times. Results are processed for display on your device and are not uploaded to the developer.</p>
+      <p>The scan reads identification responses from local devices, such as a device's web-page title. This is separate from intercepting other apps' browsing activity. Scan only networks you own or are authorized to inspect.</p>
     </div>
 
-    <!-- Permissions -->
     <div class="section">
-      <h2>3. Device Permissions & Justification</h2>
-      <p>The App requests only the strictly required permissions to deliver its utility features in accordance with Google Play Policy:</p>
-
+      <h2>3. Permissions and Their Purposes</h2>
+      <p>The current App uses the following Android permissions. Some features also require you to grant special access through Android settings.</p>
       <table>
-        <thead>
-          <tr>
-            <th>Permission</th>
-            <th>System Name</th>
-            <th>Exact Purpose</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Permission</th><th>Purpose</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong>Notifications</strong></td>
-            <td><code>POST_NOTIFICATIONS</code></td>
-            <td>Required on Android 13+ to display the real-time speed and ping meter in your status bar and notification drawer.</td>
-          </tr>
-          <tr>
-            <td><strong>Foreground Service</strong></td>
-            <td><code>FOREGROUND_SERVICE</code> & <code>FOREGROUND_SERVICE_DATA_SYNC</code></td>
-            <td>Maintains persistent, low-power background execution so the speed monitor stays accurate while you browse or use other apps.</td>
-          </tr>
-          <tr>
-            <td><strong>Network State</strong></td>
-            <td><code>ACCESS_NETWORK_STATE</code></td>
-            <td>Detects whether you are connected to Wi-Fi, Mobile Data, or Offline, allowing accurate split data statistics.</td>
-          </tr>
-          <tr>
-            <td><strong>Wi-Fi State</strong></td>
-            <td><code>ACCESS_WIFI_STATE</code></td>
-            <td>Measures Wi-Fi signal level to display connection quality indicators.</td>
-          </tr>
-          <tr>
-            <td><strong>Internet</strong></td>
-            <td><code>INTERNET</code></td>
-            <td>Strictly used to send lightweight ping packets to public DNS servers and run user-initiated diagnostic latency checks.</td>
-          </tr>
-          <tr>
-            <td><strong>Run at Startup</strong></td>
-            <td><code>RECEIVE_BOOT_COMPLETED</code></td>
-            <td>Automatically restarts the speed indicator after device reboot if you enable "Start on Boot" in settings.</td>
-          </tr>
-          <tr>
-            <td><strong>Display Over Apps</strong></td>
-            <td><code>SYSTEM_ALERT_WINDOW</code></td>
-            <td><em>(Optional)</em> Used only if you manually enable the floating speed bubble / overlay widget.</td>
-          </tr>
+          <tr><td><code>POST_NOTIFICATIONS</code></td><td>Displays the speed and latency notifications on Android 13 and later.</td></tr>
+          <tr><td><code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_SPECIAL_USE</code>, <code>FOREGROUND_SERVICE_DATA_SYNC</code></td><td>Supports background network monitoring while you use other apps.</td></tr>
+          <tr><td><code>ACCESS_NETWORK_STATE</code>, <code>ACCESS_WIFI_STATE</code></td><td>Reads connection type, Wi-Fi information, and signal strength where available.</td></tr>
+          <tr><td><code>INTERNET</code></td><td>Connects to diagnostic endpoints for latency and speed tests, and to local network devices during scans.</td></tr>
+          <tr><td><code>PACKAGE_USAGE_STATS</code> (Usage Access)</td><td>Reads per-app network usage after you grant Usage Access in Android settings.</td></tr>
+          <tr><td><code>QUERY_ALL_PACKAGES</code></td><td>Provides installed-app metadata to label per-app traffic statistics.</td></tr>
+          <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Restarts monitoring after reboot when Start on Boot and monitoring are enabled.</td></tr>
+          <tr><td><code>SYSTEM_ALERT_WINDOW</code></td><td>Displays the optional floating monitor after you grant overlay access and enable it.</td></tr>
+          <tr><td><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code></td><td>Allows requesting an optional battery-optimization exemption to support continued background monitoring.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Third Party & Ads -->
     <div class="section">
-      <h2>4. Third-Party Services & Advertising</h2>
-      <ul>
-        <li><strong>No Advertising:</strong> The App does not integrate any third-party ad networks or advertising SDKs.</li>
-        <li><strong>No Analytics Trackers:</strong> We do not use Google Analytics, Firebase, or any user telemetry SDKs.</li>
-        <li><strong>No Data Sales:</strong> We do not sell, rent, monetize, or disclose user data to any commercial third parties.</li>
-      </ul>
+      <h2>4. Third-Party Services and Support</h2>
+      <p>The App contains no advertising or analytics SDKs. Network diagnostic providers receive the connection information described in section 2. We do not sell your usage records or installed-app information.</p>
+      <p>If you choose to share a result using Android's share menu, the content you select is sent to the recipient or app you choose and is subject to that app's policies.</p>
+      <p>If you email support, we receive your email address and the information you choose to include. We use that correspondence to respond to your request and troubleshoot the reported issue. Do not send passwords or other information unnecessary for support.</p>
     </div>
 
-    <!-- Google Play Data Safety -->
     <div class="section">
-      <h2>5. Google Play Data Safety Declaration</h2>
-      <p>For transparency in the Google Play Console Data Safety section:</p>
-      <ul>
-        <li><strong>Data Collection:</strong> No data collected.</li>
-        <li><strong>Data Sharing:</strong> No data shared with third parties.</li>
-        <li><strong>Security Practices:</strong> All local logs are protected by Android application sandboxing. Data is cleared instantly when uninstalling the App or tapping "Reset History".</li>
-      </ul>
+      <h2>5. Storage, Backup, Retention, and Deletion</h2>
+      <p>Settings, usage history, data-plan configuration, and speed-test history are stored in Android's private app storage. Android app backup is enabled in the current version. Depending on your device, Android version, and system settings, app data may be included in your system backup or transferred to another device. The backup provider controls its backup storage and deletion. We do not receive or operate these system backups.</p>
+      <p>Local records are retained until removed through the available history controls, clearing the App's storage in Android settings, or uninstalling the App. Clearing traffic history and speed-test history are separate actions; clearing traffic history may keep the current day's active counters. Uninstalling removes local app data, but does not necessarily remove system backups or support correspondence. A system restore may restore previously backed-up app data.</p>
+      <p>You can stop monitoring and disable optional features in the App, and revoke Usage Access, overlay access, notifications, and battery exemptions through Android settings. For questions about support correspondence or deletion of information sent to us, email the contact below.</p>
     </div>
 
-    <!-- Children Privacy -->
     <div class="section">
       <h2>6. Children's Privacy</h2>
-      <p>Our App does not address anyone under the age of 13. Since we do not collect any personal information whatsoever, we comply fully with the Children's Online Privacy Protection Act (COPPA) and General Data Protection Regulation (GDPR).</p>
+      <p>The App is not directed at children under 13. If you believe a child has sent personal information to us through support, contact us so we can address the request.</p>
     </div>
 
-    <!-- Contact -->
     <div class="section">
-      <h2>7. Developer Contact</h2>
-      <p>If you have any questions or suggestions regarding this Privacy Policy, feel free to contact us:</p>
-      <p><strong>App:</strong> Internet Speed Meter & Ping</p>
-      <p><strong>Email:</strong> support@yourdomain.com <em>(Replace with your developer email address)</em></p>
+      <h2>7. Changes to This Policy</h2>
+      <p>We may update this policy when the App's features or information handling change. The updated policy will be posted on this page with a revised Last Updated date.</p>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      <p>&copy; 2026 Internet Speed Meter & Ping. All rights reserved.</p>
+    <div class="section">
+      <h2>8. Contact</h2>
+      <p>For privacy questions, support, or requests relating to information you have sent us:</p>
+      <p><strong>App:</strong> Internet Speed Meter &amp; Ping</p>
+      <p><strong>Email:</strong> <a href="mailto:alphafuture.studio@gmail.com">alphafuture.studio@gmail.com</a></p>
     </div>
+
+    <div class="footer"><p>&copy; 2026 Internet Speed Meter &amp; Ping. All rights reserved.</p></div>
   </div>
-
 </body>
 </html>
