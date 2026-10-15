@@ -256,7 +256,7 @@
       <div class="badge"><span class="badge-dot"></span>On-device Network Monitoring</div>
       <h1>Privacy Policy</h1>
       <p class="subtitle"><strong>App Name:</strong> Internet Speed Meter &amp; Ping</p>
-      <p class="subtitle"><strong>Last Updated:</strong> October 13, 2026</p>
+      <p class="subtitle"><strong>Last Updated:</strong> October 15, 2026</p>
     </div>
 
     <div class="section">
@@ -271,7 +271,7 @@
       <p>The App reads Android network counters and usage statistics to display Wi-Fi and mobile data consumption. It can display connection type, signal strength, local IP address, and Wi-Fi network name where Android makes them available. Usage history, settings, data-plan configuration, and successful speed-test results are stored in the App's private storage.</p>
       <p>The App does not intercept the content of other apps' network traffic, browsing history, passwords, or messages.</p>
       <h3>B. Installed apps and per-app data usage</h3>
-      <p>When you grant Usage Access in Android settings, the App reads per-app network statistics. It accesses installed-app metadata, including package names, app names, icons, and Android user IDs, to label traffic statistics. This information is processed on your device and is not uploaded to the developer or sent to the diagnostic providers. You can revoke Usage Access in Android settings.</p>
+      <p>When you grant Usage Access in Android settings, the App reads per-app network statistics. It accesses installed-app metadata, including package names, app names, icons, and Android user IDs, to label traffic statistics. On Android 11 and later, package visibility is limited to launchable apps and packages Android makes visible automatically. Traffic entries whose app metadata is unavailable may display a generic label or user ID. This information is processed on your device and is not uploaded to the developer or sent to the diagnostic providers. You can revoke Usage Access in Android settings.</p>
       <h3>C. Ping and latency measurements</h3>
       <p>Status-bar monitoring and user-initiated latency tests connect to the selected public endpoints, including Cloudflare, Google Public DNS, Quad9, or OpenDNS. These tests use TCP connections or ICMP requests to measure connection response times. They do not send your traffic history, installed-app list, or personal files.</p>
       <p>The receiving provider necessarily sees the source public IP address and connection metadata. Its handling of those requests is governed by its own policies.</p>
@@ -294,7 +294,6 @@
           <tr><td><code>ACCESS_NETWORK_STATE</code>, <code>ACCESS_WIFI_STATE</code></td><td>Reads connection type, Wi-Fi information, and signal strength where available.</td></tr>
           <tr><td><code>INTERNET</code></td><td>Connects to diagnostic endpoints for latency and speed tests, and to local network devices during scans.</td></tr>
           <tr><td><code>PACKAGE_USAGE_STATS</code> (Usage Access)</td><td>Reads per-app network usage after you grant Usage Access in Android settings.</td></tr>
-          <tr><td><code>QUERY_ALL_PACKAGES</code></td><td>Provides installed-app metadata to label per-app traffic statistics.</td></tr>
           <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Restarts monitoring after reboot when Start on Boot and monitoring are enabled.</td></tr>
           <tr><td><code>SYSTEM_ALERT_WINDOW</code></td><td>Displays the optional floating monitor after you grant overlay access and enable it.</td></tr>
           <tr><td><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code></td><td>Allows requesting an optional battery-optimization exemption to support continued background monitoring.</td></tr>
