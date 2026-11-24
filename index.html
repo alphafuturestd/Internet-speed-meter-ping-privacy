@@ -262,7 +262,7 @@
     <div class="section">
       <h2>1. Overview</h2>
       <p>Internet Speed Meter &amp; Ping is a network utility that displays transfer speed, latency, data usage, and per-app traffic.</p>
-      <p>The App processes network statistics on your device. We do not operate app accounts or a server that receives your traffic history. Network tests use external diagnostic providers. Versions with monetization also use Google services for ads and purchases as described below.</p>
+      <p>The App processes network statistics on your device. We do not operate app accounts or a server that receives your traffic history. Network tests use external diagnostic providers. Versions with monetization also use Google services for ads and purchases and offer optional Microsoft Clarity usage analytics as described below.</p>
     </div>
 
     <div class="section">
@@ -283,6 +283,10 @@
       <p>The App uses Google's User Messaging Platform (UMP) to update advertising privacy choices at launch and present a consent form where required, including for users in the EEA, the United Kingdom and Switzerland. When the <strong>Ad privacy options</strong> control is available in Settings, you can use it to review, change or withdraw your consent. The App clears loaded ads when you open this control and checks UMP's current permission before requesting new ads. Depending on your choices and the applicable requirements, Google may serve non-personalized or limited ads. The form explains the purposes and advertising partners involved.</p>
       <h3>F. Pro purchases</h3>
       <p>Google Play handles checkout and payment for Pro. Pro is available through an auto-renewing 3-month or yearly subscription, or a one-time lifetime purchase. The App checks purchase information from Google Play, such as the product ID, purchase status and token, to activate, acknowledge, and restore access. It stores purchase entitlement locally. Subscription access may be retained for up to 24 hours between successful Google Play checks, while a confirmed lifetime purchase has no subscription expiry. We do not receive your card details through the App.</p>
+      <h3>G. Optional usage analytics (Microsoft Clarity)</h3>
+      <p>Usage analytics is off by default. If you are at least 18 and choose to allow it in Settings, Microsoft Clarity may collect taps, scrolling, masked screen layouts, device specifications, app diagnostics and a random pseudonymous identifier to help us understand usability problems. The App masks its entire main view before initializing the SDK and never deliberately unmasks text or images. We do not supply a custom user identifier, personal files, traffic contents, installed-app metadata or purchase tokens to Clarity. Microsoft necessarily receives connection metadata such as the public IP address. See <a href="https://privacy.microsoft.com/privacystatement">Microsoft's Privacy Statement</a> and <a href="https://learn.microsoft.com/en-us/clarity/mobile-sdk/sdk-google-playstore-privacy-guidance">Clarity's Google Play data guidance</a>.</p>
+      <p>After your opt-in, the App makes a small HTTPS request to Cloudflare to check the country associated with your current network IP address. This request does not include an app or user identifier, history or test results; the App uses only the country code and does not store or log the returned IP address. Recording remains off until a permitted country is verified. All European countries (including Ukraine, the EEA, the UK and Switzerland), listed European dependencies, transcontinental countries and additional restricted destinations are excluded. Unknown or failed lookups, detected VPNs/proxies, metered networks and contradictory blocked-region device signals do not permit recording. IP geolocation and device hints are approximate and cannot guarantee a person's physical location.</p>
+      <p>Recording is paused when the App loses focus or leaves the foreground, during speed and ping tests, when the active network changes, or when the region check expires. The SDK's independent background upload job is disabled. You can withdraw consent at any time by switching off <strong>Usage analytics</strong> in Settings; this stops future recording and revokes the SDK analytics signal. Your choice expires after 180 days and is excluded from Android backup and device transfer. This choice is separate from advertising consent, and the App never grants Microsoft advertising-storage consent. Withdrawing consent does not automatically delete information already received by Microsoft. For questions or data-deletion requests, contact us using the email below.</p>
     </div>
 
     <div class="section">
@@ -295,7 +299,7 @@
           <tr><td><code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_SPECIAL_USE</code>, <code>FOREGROUND_SERVICE_DATA_SYNC</code></td><td>Supports background network monitoring while you use other apps.</td></tr>
           <tr><td><code>ACCESS_NETWORK_STATE</code>, <code>ACCESS_WIFI_STATE</code></td><td>Reads connection type, Wi-Fi information, and signal strength where available.</td></tr>
           <tr><td><code>READ_BASIC_PHONE_STATE</code> (Android 13 and later)</td><td>Reads the cellular data network type to label the active connection, such as 4G or 5G. This is a normal permission with no runtime prompt; the App does not use it to read phone numbers or device identifiers.</td></tr>
-          <tr><td><code>INTERNET</code></td><td>Connects to diagnostic endpoints and, in versions with monetization, to Google services for ads and purchasing.</td></tr>
+          <tr><td><code>INTERNET</code></td><td>Connects to diagnostic endpoints, Google services for ads and purchasing, and, only after analytics opt-in, to Cloudflare for a country check and Microsoft Clarity for permitted usage analytics.</td></tr>
           <tr><td>Advertising ID permissions</td><td>Allow the Google Mobile Ads SDK to access the advertising ID where Android and privacy settings permit it.</td></tr>
           <tr><td><code>com.android.vending.BILLING</code></td><td>Supports Google Play checkout and restoration of Pro.</td></tr>
           <tr><td><code>PACKAGE_USAGE_STATS</code> (Usage Access)</td><td>Reads per-app network usage after you grant Usage Access in Android settings.</td></tr>
@@ -308,7 +312,7 @@
 
     <div class="section">
       <h2>4. Third-Party Services and Support</h2>
-      <p>Network diagnostic providers and Google receive the information described in section 2 for their respective features. We do not sell your usage records or installed-app information.</p>
+      <p>Network diagnostic providers, Google and, after optional analytics consent in an eligible region, Microsoft receive the information described in section 2 for their respective features. We do not sell your usage records or installed-app information.</p>
       <p>If you choose to share a result using Android's share menu, the content you select is sent to the recipient or app you choose and is subject to that app's policies.</p>
       <p>If you email support, we receive your email address and the information you choose to include. We use that correspondence to respond to your request and troubleshoot the reported issue. Do not send passwords or other information unnecessary for support.</p>
     </div>
